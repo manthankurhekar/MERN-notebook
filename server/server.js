@@ -3,7 +3,14 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-app.use(cors());
+const corsOptions = {
+      "origin": "*",
+      "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+      "preflightContinue": true,
+      "optionsSuccessStatus": 204
+}
+    
+app.use(cors(corsOptions))
 app.use(express.json());
 
 app.get('/', async (req, res) => {
